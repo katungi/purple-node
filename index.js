@@ -40,11 +40,15 @@ const server  = http.createServer(function(req,res){
     req.on('end', function(){
         buffer += decoder.end();
 
-    // send the response
-    res.end("Hello world\n");
+        //choose the handler this reques should go to, else go to notFound
+        
+        var chooseHandler = typeof
 
-    // Log the response path
-    console.log('Request received with these payload:', buffer);
+        // send the response
+        res.end("Hello world\n");
+
+        // Log the response path
+        console.log('Request received with these payload:', buffer);
     });
 });
 
@@ -53,3 +57,27 @@ const server  = http.createServer(function(req,res){
 server.listen(3000, function(){
     console.log("The server is listening to port 3000");
 });
+
+// define our handlers
+var handlers = {};
+
+// sampler handers
+
+handlers.sample = function(data, callback){
+    // callback a http status code, and a payload object
+    callback(406,{'name' : 'sample handler'});
+};
+
+// not found handler
+
+handlers.notFound = function(data, callback){
+    callback(404);
+};
+
+// Defining a request router
+
+const router ={
+    'sample' : handlers.sample
+};
+
+// TODO: continue with 18- Routing Request
