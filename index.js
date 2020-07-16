@@ -42,8 +42,22 @@ const server  = http.createServer(function(req,res){
 
         //choose the handler this reques should go to, else go to notFound
         
-        var chooseHandler = typeof
+        var chosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notFound;
 
+        //construct the data object to send to the handler
+        var data {
+            'trimmedPath' : trimmedPath,
+            'queryStringObject' : queryStringObject,
+            'method' : method,
+            'headers' : headers,
+            'payload' : buffer
+        };
+
+        // Route the request to the handler specified in the handler
+        chosenHandler(data, function(statusCode, payload){
+
+        });
+   
         // send the response
         res.end("Hello world\n");
 
