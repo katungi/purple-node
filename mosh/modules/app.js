@@ -51,7 +51,7 @@ const http = require('http');
 const server = http.createServer((req, res)=>{
     if(req.url === "/"){
         res.write("hell there you weirdo");
-        res.end();
+        res.end();hell there you weirdo
     }
 });
 

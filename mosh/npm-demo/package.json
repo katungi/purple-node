@@ -1,0 +1,14 @@
+{
+  "name": "npm-demo",
+  "version": "0.0.1",
+  "description": "Practicing node with Mosh",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.10.0"
+  }
+}
